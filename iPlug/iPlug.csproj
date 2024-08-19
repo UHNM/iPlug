@@ -9,6 +9,9 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.0.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="JJMasterData.Commons" Version="4.2.6" />
+    <PackageReference Include="JJMasterData.Core" Version="4.2.6" />
+    <PackageReference Include="JJMasterData.Web" Version="4.2.6" />
   </ItemGroup>
 
   <ItemGroup>

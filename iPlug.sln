@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iPlug", "iPlug\iPlug.csproj", "{6EB05B4C-AD54-4045-A9A9-48ADB17F6805}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iPlug.PluginApi", "iPlug.PluginApi\iPlug.PluginApi.csproj", "{91E19DA0-92D4-4567-8F5C-A3DED66390AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iPlug.PluginApi", "iPlug.PluginApi\iPlug.PluginApi.csproj", "{91E19DA0-92D4-4567-8F5C-A3DED66390AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginALibrary", "PluginALibrary\PluginALibrary.csproj", "{9BA14A9B-8D09-4253-83AB-9D80D3F78F2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginALibrary", "PluginALibrary\PluginALibrary.csproj", "{9BA14A9B-8D09-4253-83AB-9D80D3F78F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginBLibrary", "PluginBLibrary\PluginBLibrary.csproj", "{22ABF264-A3F5-442C-99AA-AD31C6B5D19F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginBLibrary", "PluginBLibrary\PluginBLibrary.csproj", "{22ABF264-A3F5-442C-99AA-AD31C6B5D19F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

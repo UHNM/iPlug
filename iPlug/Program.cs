@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using ConnectFour;
 using iPlug;
 using iPlug.Components;
+using JJMasterData.Web.Configuration;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,12 +14,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddSingleton<GameState>();
+//builder.Services.AddSingleton<MyDynamicForm>();
 
 
+//builder.Services.AddSingleton<JJMasterData.Core.UI.Components.IComponentFactory>();
 //autofac
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+
+//dynamic form
+builder.Services.AddControllersWithViews();
+builder.Services.AddJJMasterDataWeb();
 
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(cb =>
@@ -57,5 +65,13 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+//dynamic form
+app.UseJJMasterDataWeb();
+app.MapJJMasterData();
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=form}/{action=DynamicForm}");
 
 app.Run();
