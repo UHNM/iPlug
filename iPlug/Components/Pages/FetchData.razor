@@ -1,0 +1,48 @@
+﻿@page "/fetchdata"
+@using iPlug.PluginApi;
+@inject iPlug.PluginProvider PluginProvider;
+
+
+<PageTitle>PlugIns</PageTitle>
+<h1>Execute the Plugins!</h1>
+<p>This component demonstrates calling plugin code</p>
+
+@if (plugins == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p><em>There are @plugins.Count plugins.</em></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Plugin Output</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var plugin in plugins)
+            {
+                <!-- poor cjoice of method name, need to change-->
+                <tr>
+                    <td>@plugin.GetDataAsync().GetAwaiter().GetResult()</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IReadOnlyList<IPluginApi>? plugins;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Yield();
+        
+        plugins = PluginProvider.GetPlugins();
+    }
+
+
+}
