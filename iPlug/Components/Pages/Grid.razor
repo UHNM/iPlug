@@ -1,0 +1,78 @@
+﻿@page "/grid"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using System.Diagnostics
+@rendermode InteractiveServer
+
+
+<PageTitle>QuickGrid</PageTitle>
+<h1>MS grid for Blazor</h1>
+<p>For more functionality like freeze panes, we may need</p><a href="https://demos.blazorbootstrap.com/grid/overview">Bootstrap Blazor Grid</a>
+<br/>
+<br />
+
+<div>
+    <QuickGrid Class="table" Items="FilteredPeople" Pagination="state">
+        <PropertyColumn Property="@(p => p.PersonId)" Sortable="true" Title="id" />
+        <PropertyColumn Property="@(p => p.Name)" Sortable="true" Title="name" >
+            <ColumnOptions>
+                <div>
+                    <input type="search" @bind="titleFilter" @bind:event="oninput" autofocus />
+                </div>
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(p => p.BirthDate)" Format="MM/dd/yyyy" Sortable="true" Title="DOB" />
+    </QuickGrid>
+    <Paginator State="state" />
+</div>
+
+
+@code {
+    PaginationState state = new PaginationState { ItemsPerPage = 5 };
+    string titleFilter = "";
+    IQueryable<Person>? people;
+
+
+    IQueryable<Person>? FilteredPeople
+    {
+        get
+        {
+            var result = people?.Where(c => c.Name.Contains(titleFilter));
+            return result;
+        }
+    }
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        List<Person> items = new List<Person>
+            {
+             new Person(10895, "Jean Martin", new DateOnly(1985, 3, 16)),
+             new Person(10944, "António Langa", new DateOnly(1991, 12, 1)),
+             new Person(11203, "Julie Smith", new DateOnly(1958, 10, 10)),
+             new Person(11205, "Nur Sari", new DateOnly(1922, 4, 27)),
+             new Person(11898, "Jose Hernandez", new DateOnly(2011, 5, 3)),
+             new Person(12130, "Kenji Sato", new DateOnly(2004, 1, 9)),
+            };
+       
+        people =  (items).AsQueryable();
+        
+    }
+
+   
+
+    record Person(int PersonId, string Name, DateOnly BirthDate)
+    {
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
+        }
+    }
+
+
+   
+
+   
+}

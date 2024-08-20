@@ -12,6 +12,7 @@
     <PackageReference Include="JJMasterData.Commons" Version="4.2.6" />
     <PackageReference Include="JJMasterData.Core" Version="4.2.6" />
     <PackageReference Include="JJMasterData.Web" Version="4.2.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.8" />
   </ItemGroup>
 
   <ItemGroup>
