@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddSingleton<GameState>();
-//builder.Services.AddSingleton<MyDynamicForm>();
+builder.Services.AddSingleton<MyDynamicForm>();
 
 
 //builder.Services.AddSingleton<JJMasterData.Core.UI.Components.IComponentFactory>();

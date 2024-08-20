@@ -16,9 +16,11 @@ namespace iPlug.Components.Pages
         //private readonly ILogger<DynamicForm> _logger;
         private readonly IComponentFactory?_componentFactory;
         //private IService service;
-        
-        [Microsoft.AspNetCore.Components.Inject]
-        public IComponentFactory myComponentFactory { get; set; }
+
+        //[Microsoft.AspNetCore.Components.Inject]
+        //public IComponentFactory myComponentFactory { get; set; }
+
+        //MyDynamicForm myDynamicForm;
 
         public required string PanelViewHtml { get; set; }
 
@@ -48,7 +50,7 @@ namespace iPlug.Components.Pages
 
         private async Task<JJDataPanel> GetDataPanel()
         {
-            var dataPanel = await myComponentFactory.DataPanel.CreateAsync("Ventilation");
+            var dataPanel = await myForm._componentFactory.DataPanel.CreateAsync("Ventilation");
             dataPanel.PageState = PageState.Update; // You can change here to PageState.Insert if you want.
             return dataPanel;
         }
