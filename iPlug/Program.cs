@@ -7,18 +7,16 @@ using JJMasterData.Web.Configuration;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+//var root = Path.GetFullPath(Path.Join(builder.Environment.ContentRootPath));
+//var settingsPath = Path.Combine(root, "appsettings.json");
 
-//var containerBuilder = new ContainerBuilder();
+//builder.Configuration.AddJsonFile(settingsPath, optional: false, reloadOnChange: true);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddSingleton<GameState>();
-builder.Services.AddSingleton<MyDynamicForm>();
-
-
-//builder.Services.AddSingleton<JJMasterData.Core.UI.Components.IComponentFactory>();
-//autofac
+//builder.Services.AddSingleton<MyDynamicForm>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();

@@ -7,52 +7,48 @@ using JJMasterData.Core.UI.Components;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using JJMasterData.Commons.Data.Entity.Repository;
+using Azure.Core;
 
 
 namespace iPlug.Components.Pages
 {
     public partial class DynamicForm 
     {
-        //private readonly ILogger<DynamicForm> _logger;
+        [Microsoft.AspNetCore.Components.Inject]
+        public MyDynamicForm myForm { get; set; }
+
+
         private readonly IComponentFactory?_componentFactory;
         //private IService service;
 
         //[Microsoft.AspNetCore.Components.Inject]
         //public IComponentFactory myComponentFactory { get; set; }
 
-        //MyDynamicForm myDynamicForm;
+        MyDynamicForm? myDynamicForm;
 
         public required string PanelViewHtml { get; set; }
+     
 
-        public DynamicForm(IComponentFactory componentFactory)
-        {
-            _componentFactory = componentFactory;
-    
-        }
-        public DynamicForm()
-        {
-            
-        }
-
-       
 
         protected override async Task OnInitializedAsync()
         {
-            
-            var dataPanel = await GetDataPanel();
-            var result = await dataPanel.GetResultAsync();
-            //if (result is IActionResult actionResult)
-            //    return actionResult;
-            PanelViewHtml = result.Content;
+            await Task.Delay(100);
+
+            //var dataPanel = await GetDataPanel();
+            //var result = await dataPanel.GetResultAsync();
+            ////if (result is IActionResult actionResult)
+            ////    return actionResult;
+            var PanelViewHtml = myForm.DoStuff();
+
 
         }
 
 
-        private async Task<JJDataPanel> GetDataPanel()
-        {
-            var dataPanel = await myForm._componentFactory.DataPanel.CreateAsync("Ventilation");
-            dataPanel.PageState = PageState.Update; // You can change here to PageState.Insert if you want.
-            return dataPanel;
-        }
+        //private async Task<JJDataPanel> GetDataPanel()
+        //{
+        //    var dataPanel = await myForm._componentFactory.DataPanel.CreateAsync("Ventilation");
+        //    dataPanel.PageState = PageState.Update; // You can change here to PageState.Insert if you want.
+        //    return dataPanel;
+        //}
     }
 }
