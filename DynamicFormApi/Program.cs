@@ -33,7 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("DevCorsPolicy");
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 //JJMasterData
 app.UseJJMasterDataWeb();
