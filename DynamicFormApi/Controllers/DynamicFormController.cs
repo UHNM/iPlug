@@ -1,15 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using JJMasterData.Core.DataDictionary.Models;
 using JJMasterData.Core.UI.Components;
+using JJMasterData.Commons.Data.Entity.Repository.Abstractions;
 
 namespace DynamicFormApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DynamicFormController : ControllerBase
+    public class DynamicFormController : Controller
     {
 
+       
         private readonly IComponentFactory _componentFactory;
+     
+
+
         public required string PanelViewHtml { get; set; }
 
 

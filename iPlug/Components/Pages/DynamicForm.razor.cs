@@ -12,23 +12,25 @@ using Azure.Core;
 
 namespace iPlug.Components.Pages
 {
-    public partial class DynamicForm 
+    public partial class DynamicForm
     {
-        //[Microsoft.AspNetCore.Components.Inject]
-        //public MyDynamicForm myForm { get; set; }
+       // [Microsoft.AspNetCore.Components.Inject]
+       // public MyDynamicForm? myForm { get; set; }
 
         [Microsoft.AspNetCore.Components.Inject]
         public IComponentFactory? _componentFactory { get; set; }
-        //private readonly IComponentFactory?_componentFactory
-       
-      
-      //  MyDynamicForm? myDynamicForm;
+
+
+        //  MyDynamicForm? myDynamicForm;
 
         public required string PanelViewHtml { get; set; }
         //public Task<string> MyProperty { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+         
+
+
             await Task.Delay(100);
 
             var dataPanel = await GetDataPanel();
@@ -43,6 +45,7 @@ namespace iPlug.Components.Pages
 
         private async Task<JJDataPanel> GetDataPanel()
         {
+            //var dataPanel = await myForm._componentFactory.DataPanel.CreateAsync("Ventilation");
             var dataPanel = await _componentFactory.DataPanel.CreateAsync("Ventilation");
             dataPanel.PageState = PageState.Update; // You can change here to PageState.Insert if you want.
             return dataPanel;

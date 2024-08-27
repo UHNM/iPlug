@@ -8,13 +8,17 @@ namespace iPlug.Components.Pages
     public partial class DynamicForm2
     {
 
-        [Inject]
-        private HttpClient Http { get; set; }
+       /// <summary>
+       /// [Inject]
+       /// </summary>
+       // private HttpClient Http { get; set; }
 
 
         protected override async Task OnInitializedAsync()
         {
-            await Http.GetAsync("api/dynamicform");
+            HttpClient client = new HttpClient();   
+
+            await client.GetAsync("https://localhost:7200/dynamicform");
 
 
            

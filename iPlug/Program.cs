@@ -3,7 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using ConnectFour;
 using iPlug;
 using iPlug.Components;
-//using JJMasterData.Web.Configuration;
+using JJMasterData.Web.Configuration;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,36 +16,36 @@ var settingsPath = Path.Combine(root, "appsettings.json");
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddSingleton<GameState>();
-//builder.Services.AddSingleton<MyDynamicForm>();
+//builder.Services.AddTransient<MyDynamicForm>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddHttpClient<HttpClient>(option=>option.BaseAddress=new Uri("https://localhost:7157/"));
+builder.Services.AddHttpClient<HttpClient>(option=>option.BaseAddress=new Uri("https://localhost:7200/"));
 
 //dynamic form
 builder.Services.AddControllersWithViews();
-//builder.Services.AddJJMasterDataWeb();
+builder.Services.AddJJMasterDataWeb();
 
 
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(cb =>
-{
-    foreach (var file in Directory.GetFiles(
-        AppDomain.CurrentDomain.BaseDirectory,
-        "*plugin*.dll",
-        SearchOption.TopDirectoryOnly))
-    {
-        var assembly = Assembly.LoadFrom(file);
-        cb.RegisterAssemblyModules(assembly);
-    }
-})).ConfigureServices(services => services.AddAutofac());
+//builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(cb =>
+//{
+//    foreach (var file in Directory.GetFiles(
+//        AppDomain.CurrentDomain.BaseDirectory,
+//        "*plugin*.dll",
+//        SearchOption.TopDirectoryOnly))
+//    {
+//        var assembly = Assembly.LoadFrom(file);
+//        cb.RegisterAssemblyModules(assembly);
+//    }
+//})).ConfigureServices(services => services.AddAutofac());
 
 
-builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
-{
-    containerBuilder.RegisterModule(new AutofacModule());
-    // ... any other Autofac registrations ...
-});
+//builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+//{
+//    containerBuilder.RegisterModule(new AutofacModule());
+//    // ... any other Autofac registrations ...
+//});
 
 var app = builder.Build();
 
@@ -66,8 +66,8 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 //dynamic form
-//app.UseJJMasterDataWeb();
-//app.MapJJMasterData();
+app.UseJJMasterDataWeb();
+app.MapJJMasterData();
 
 //app.MapControllerRoute(
 //    name: "default",
