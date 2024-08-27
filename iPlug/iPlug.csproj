@@ -13,6 +13,7 @@
     <PackageReference Include="JJMasterData.Core" Version="4.2.6" />
     <PackageReference Include="JJMasterData.Web" Version="4.2.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

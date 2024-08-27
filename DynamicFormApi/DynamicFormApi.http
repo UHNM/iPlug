@@ -1,0 +1,6 @@
+@DynamicFormApi_HostAddress = http://localhost:5250
+
+GET {{DynamicFormApi_HostAddress}}/dynamicform/
+Accept: application/json
+
+###

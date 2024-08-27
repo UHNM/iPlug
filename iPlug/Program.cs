@@ -3,12 +3,12 @@ using Autofac.Extensions.DependencyInjection;
 using ConnectFour;
 using iPlug;
 using iPlug.Components;
-using JJMasterData.Web.Configuration;
+//using JJMasterData.Web.Configuration;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-//var root = Path.GetFullPath(Path.Join(builder.Environment.ContentRootPath));
-//var settingsPath = Path.Combine(root, "appsettings.json");
+var root = Path.GetFullPath(Path.Join(builder.Environment.ContentRootPath));
+var settingsPath = Path.Combine(root, "appsettings.json");
 
 //builder.Configuration.AddJsonFile(settingsPath, optional: false, reloadOnChange: true);
 
@@ -21,10 +21,11 @@ builder.Services.AddSingleton<GameState>();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
+builder.Services.AddHttpClient<HttpClient>(option=>option.BaseAddress=new Uri("https://localhost:7157/"));
 
 //dynamic form
 builder.Services.AddControllersWithViews();
-builder.Services.AddJJMasterDataWeb();
+//builder.Services.AddJJMasterDataWeb();
 
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(cb =>
@@ -65,8 +66,8 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 //dynamic form
-app.UseJJMasterDataWeb();
-app.MapJJMasterData();
+//app.UseJJMasterDataWeb();
+//app.MapJJMasterData();
 
 //app.MapControllerRoute(
 //    name: "default",

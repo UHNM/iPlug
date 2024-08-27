@@ -11,10 +11,7 @@ namespace iPlug
 
         public MyDynamicForm(IComponentFactory componentFactory)
         {
-           
             _componentFactory = componentFactory;
-
-
         }
 
 

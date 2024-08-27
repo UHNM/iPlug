@@ -14,41 +14,38 @@ namespace iPlug.Components.Pages
 {
     public partial class DynamicForm 
     {
-        [Microsoft.AspNetCore.Components.Inject]
-        public MyDynamicForm myForm { get; set; }
-
-
-        private readonly IComponentFactory?_componentFactory;
-        //private IService service;
-
         //[Microsoft.AspNetCore.Components.Inject]
-        //public IComponentFactory myComponentFactory { get; set; }
+        //public MyDynamicForm myForm { get; set; }
 
-        MyDynamicForm? myDynamicForm;
+        [Microsoft.AspNetCore.Components.Inject]
+        public IComponentFactory? _componentFactory { get; set; }
+        //private readonly IComponentFactory?_componentFactory
+       
+      
+      //  MyDynamicForm? myDynamicForm;
 
         public required string PanelViewHtml { get; set; }
-     
-
+        //public Task<string> MyProperty { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
             await Task.Delay(100);
 
-            //var dataPanel = await GetDataPanel();
-            //var result = await dataPanel.GetResultAsync();
+            var dataPanel = await GetDataPanel();
+            var result = await dataPanel.GetResultAsync();
             ////if (result is IActionResult actionResult)
             ////    return actionResult;
-            var PanelViewHtml = myForm.DoStuff();
-
+            // var PanelViewHtml = myForm.DoStuff();
+            //MyProperty = myForm.DoStuff();
 
         }
 
 
-        //private async Task<JJDataPanel> GetDataPanel()
-        //{
-        //    var dataPanel = await myForm._componentFactory.DataPanel.CreateAsync("Ventilation");
-        //    dataPanel.PageState = PageState.Update; // You can change here to PageState.Insert if you want.
-        //    return dataPanel;
-        //}
+        private async Task<JJDataPanel> GetDataPanel()
+        {
+            var dataPanel = await _componentFactory.DataPanel.CreateAsync("Ventilation");
+            dataPanel.PageState = PageState.Update; // You can change here to PageState.Insert if you want.
+            return dataPanel;
+        }
     }
 }
