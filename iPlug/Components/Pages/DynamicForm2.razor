@@ -1,16 +1,12 @@
 ﻿@page "/form2"
 @rendermode InteractiveServer
-@inject Microsoft.Extensions.Configuration.IConfiguration config
+@* @inject Microsoft.Extensions.Configuration.IConfiguration config *@
 <h1>Dynamic Form 2</h1>
 
 <PageTitle>Dynamic Form 2</PageTitle>
 
 
-<form asp-action="Save">
-
-    <span>@config["DynamicFormsApiUrl"]</span>
+<form>
     @((MarkupString)PanelViewHtml)
-   
-
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" @onclick="OnButtonClick" class="btn btn-primary">Save</button>
 </form>
