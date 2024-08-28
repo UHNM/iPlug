@@ -1,7 +1,6 @@
 ﻿@page "/form2"
 @rendermode InteractiveServer
-@* @inject JJMasterData.Core.UI.Components.IComponentFactory componentFactory *@
-@* @inject MyDynamicForm myForm *@
+@inject Microsoft.Extensions.Configuration.IConfiguration config
 <h1>Dynamic Form 2</h1>
 
 <PageTitle>Dynamic Form 2</PageTitle>
@@ -9,7 +8,7 @@
 
 <form asp-action="Save">
 
-   
+    <span>@config["DynamicFormsApiUrl"]</span>
     @((MarkupString)PanelViewHtml)
    
 
