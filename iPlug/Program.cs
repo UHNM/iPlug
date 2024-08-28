@@ -28,24 +28,24 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddJJMasterDataWeb();
 
 
-//builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(cb =>
-//{
-//    foreach (var file in Directory.GetFiles(
-//        AppDomain.CurrentDomain.BaseDirectory,
-//        "*plugin*.dll",
-//        SearchOption.TopDirectoryOnly))
-//    {
-//        var assembly = Assembly.LoadFrom(file);
-//        cb.RegisterAssemblyModules(assembly);
-//    }
-//})).ConfigureServices(services => services.AddAutofac());
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory(cb =>
+{
+    foreach (var file in Directory.GetFiles(
+        AppDomain.CurrentDomain.BaseDirectory,
+        "*plugin*.dll",
+        SearchOption.TopDirectoryOnly))
+    {
+        var assembly = Assembly.LoadFrom(file);
+        cb.RegisterAssemblyModules(assembly);
+    }
+})).ConfigureServices(services => services.AddAutofac());
 
 
-//builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
-//{
-//    containerBuilder.RegisterModule(new AutofacModule());
-//    // ... any other Autofac registrations ...
-//});
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder.RegisterModule(new AutofacModule());
+    // ... any other Autofac registrations ...
+});
 
 var app = builder.Build();
 
