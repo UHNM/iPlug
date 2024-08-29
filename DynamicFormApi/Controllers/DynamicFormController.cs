@@ -3,6 +3,7 @@ using JJMasterData.Core.DataDictionary.Models;
 using JJMasterData.Core.UI.Components;
 using JJMasterData.Commons.Data.Entity.Repository.Abstractions;
 using JJMasterData.Commons.Data.Entity.Repository;
+using DynamicFormApi.Models;
 
 namespace DynamicFormApi.Controllers
 {
@@ -47,6 +48,15 @@ namespace DynamicFormApi.Controllers
 
         [Route("save"), HttpPost]
         public async Task<IActionResult> Save()
+        {
+            var dataPanel = await GetDataPanel();
+            var values = await dataPanel.GetFormValuesAsync();
+
+            return Ok(values);
+        }
+
+        [Route("ventilation"), HttpPost]
+        public async Task<IActionResult> VSave([FromBody]VentilationFormModel model)
         {
             var dataPanel = await GetDataPanel();
             var values = await dataPanel.GetFormValuesAsync();

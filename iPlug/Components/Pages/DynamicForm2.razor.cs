@@ -1,3 +1,4 @@
+using Azure.Core.Serialization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc;
@@ -20,8 +21,8 @@ namespace iPlug.Components.Pages
 
             //if (InitialCount < 2)
             //{
-               // InitialCount++;
-                HttpClient client = new HttpClient();
+            // InitialCount++;
+                using HttpClient client = new HttpClient();
                 var url = configuration["DynamicFormsApiUrl"] + "/getdynamicform";
                 var response = await client.GetAsync(url);
                 PanelViewHtml = await response.Content.ReadAsStringAsync();
@@ -35,7 +36,6 @@ namespace iPlug.Components.Pages
 
         public async Task OnButtonClick(MouseEventArgs e)
         {
-           
             HttpClient client = new HttpClient();
 
             var url = configuration["DynamicFormsApiUrl"] + "/save";

@@ -1,0 +1,56 @@
+﻿@page "/ventilationform"
+@using Models;
+
+<PageTitle>Ventilation Form</PageTitle>
+
+<h3>VentilationForm</h3>
+
+<form Model="model">
+
+
+<div id="ventilation-data-panel" name="ventilation-data-panel">
+    <input hidden="hidden" id="data-panel-state-ventilation-data-panel" name="data-panel-state-ventilation-data-panel" value="4" />
+    <input hidden="hidden" id="data-panel-is-at-modal-ventilation-data-panel" name="data-panel-is-at-modal-ventilation-data-panel" value="False" />
+    <div class="container-fluid">
+        <div>
+            <div class="row">
+                <div class=" mb-3 col-sm-12">
+                    <label for="SupplierRef" class=" form-label">
+                        SupplierRef
+                    </label>
+                    <input id="SupplierRef" name="SupplierRef" class="form-control" type="text" maxlength="255" @bind-value="model.SupplierRef" />
+                </div>
+                <div class=" mb-3 col-sm-12">
+                    <label for="firstName" class=" form-label">
+                        FirstName
+                    </label>
+                    <input id="firstName" name="firstName" class="form-control" type="text" maxlength="150" @bind-value="model.FirstName" />
+                </div>
+                <div class=" mb-3 col-sm-12">
+                    <label for="EDFERFER" class=" form-label">
+                        EDFERFER
+                    </label>
+                    <input id="EDFERFER" name="EDFERFER" class="form-control" type="text" maxlength="4" @bind-value="model.EDREFERER" />
+                </div>
+                <div class=" mb-3 col-sm-12">
+                    <label for="wsdd" class=" form-label">
+                        wsdd
+                    </label>
+                    <input id="wsdd" name="wsdd" placeholder="1" class="form-control  text-end" type="number" maxlength="22" @bind-value="model.wsdd" />
+                </div>
+            </div>
+        </div>
+    </div>
+   <button type="submit" @onclick="OnButtonClick" class="btn btn-primary">Save</button>
+    </div>
+</form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+    </script>
+
+@code {
+
+}

@@ -1,5 +1,5 @@
 ﻿@page "/form2"
-@rendermode InteractiveServer
+@rendermode InteractiveAuto
 @* @inject Microsoft.Extensions.Configuration.IConfiguration config *@
 <h1>Dynamic Form 2</h1>
 
@@ -8,5 +8,5 @@
 
 <form>
     @((MarkupString)PanelViewHtml)
-    <button type="submit" @onclick="OnButtonClick" class="btn btn-primary">Save</button>
+    <input type="submit" @onclick="OnButtonClick" class="btn btn-primary">Save</input>
 </form>
