@@ -30,14 +30,18 @@
 
 
 <div>
-    <div class="board">
-        @for (var i=0; i < 42; i++)
-        {
-        <span class="container">
-            <span></span>
-        </span>
-        }
+    <div>
+        <div class="board">
+            @for (var i = 0; i < 42; i++)
+            {
+                <span class="container">
+                    <span></span>
+                </span>
+            }
+        </div>
     </div>
+
+
     @for (var i = 0; i < 42; i++)
     {
         <span class="@pieces[i]"></span>

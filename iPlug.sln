@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginALibrary", "PluginALi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginBLibrary", "PluginBLibrary\PluginBLibrary.csproj", "{22ABF264-A3F5-442C-99AA-AD31C6B5D19F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicFormApi", "DynamicFormApi\DynamicFormApi.csproj", "{E97DC464-DA3A-4EAE-BAFC-6601C9532707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicFormApi", "DynamicFormApi\DynamicFormApi.csproj", "{E97DC464-DA3A-4EAE-BAFC-6601C9532707}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
